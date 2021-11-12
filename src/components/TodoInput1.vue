@@ -3,6 +3,7 @@
     <label for="todo-input">오늘 할 일 : </label>
     <input id="todo-input" type="text" :value="item" @input="handleInput" />
     <button @click="addTodo">add</button>
+    <button @click="testTodo">testTodo</button>
   </div>
 </template>
 <script lang="ts">
@@ -13,9 +14,8 @@ export default Vue.extend({
     item: { type: String, default: "" },
   },
   methods: {
-    handleInput(event: InputEvent) {
-      const eventTarget = event.target as HTMLInputElement;
-      this.$emit("input", eventTarget.value);
+    handleInput(event: any) {
+      this.$emit("input", event.target.value);
     },
     addTodo() {
       this.$emit("add");
